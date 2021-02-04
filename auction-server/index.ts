@@ -87,7 +87,7 @@ const subscriptions = new Map<any, number[]> ();
 
 const wsServer = new Server({port: 8085});
 wsServer.on('connection', websocket =>{
-  // websocket.send("This is a news from server");
+  websocket.send("This is a notification from server");
   websocket.on("message", message =>{
     console.log("Received message： " + message)
     let messageObj = JSON.parse(message);

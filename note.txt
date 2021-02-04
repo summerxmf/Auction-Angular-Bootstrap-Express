@@ -1,0 +1,2 @@
+Server is write in Typescript.
+Terminal => run task...=> tsc build -tsconfig.json
