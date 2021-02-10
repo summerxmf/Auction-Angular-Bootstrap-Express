@@ -91,8 +91,7 @@ wsServer.on('connection', websocket =>{
   websocket.on("message", message =>{
     console.log("Received message： " + message)
     let messageObj = JSON.parse(message);
-    let productIds = subscriptions.get(websocket) || [];
-    
+    let productIds = subscriptions.get(websocket) || [];    
     subscriptions.set(websocket, [...productIds, messageObj.productId]);    
   })
 })
