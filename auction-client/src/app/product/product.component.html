@@ -1,0 +1,25 @@
+  
+    <!-- <div class="col-sm-12">
+      <div class="form-group mt-4">
+        <input type="text" class="form-control" placeholder="Search for something" [formControl]="titleFilter">
+      </div>
+    </div> -->
+  
+  <div class="col-lg-4" *ngFor="let product of products | async">    
+    <div class="card mt-4">
+      <img [src]="product.url" alt="" class="d-block w-100">
+      <div class="card-body">
+        <div class="caption d-flex justify-content-between align-items-center">
+          <h5><a [routerLink]="['/product', product.id]">{{product.title}}</a></h5>
+          <h5>${{product.price}}</h5>        
+        </div>
+        <p class="card-text">{{product.desc}}</p>
+        <div>
+          <app-stars [rating]="product.rating"></app-stars>
+        </div>
+      </div>
+         
+    </div>
+  
+  </div><!-- /.col-lg-4 -->
+  

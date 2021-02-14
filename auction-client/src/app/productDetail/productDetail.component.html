@@ -1,0 +1,58 @@
+<div class="card">
+  <img [src]="product?.url" alt="" class="d-block w-100">
+  <div class="card-body">
+    <div class="caption d-flex justify-content-between align-items-center">
+      <h5>{{product?.title}}</h5>
+      <h5>${{product?.price}}</h5>        
+    </div>
+    <p class="card-text">{{product?.desc}}</p>
+    <div class="caption d-flex justify-content-between align-items-center">
+      <app-stars [rating]="product?.rating"></app-stars>
+      <span>{{comments?.length}}</span>
+    </div>
+  </div> 
+  <div class="card">
+    <div class="card-body">
+      <button class="btn btn-secondary btn-lg" 
+        [class.active]="isWatched" 
+        (click)="watchProduct()"
+        >
+        {{isWatched? 'Unfollow': 'Follow'}}
+      </button>
+      <label class="ml-2">Latest Bid ${{currentBid|number:".0-2"}}</label>
+    </div>
+    
+  </div> 
+
+  <div class="jumbotron">
+    <div class="">
+      <button class="btn btn-primary btn-lg" 
+      (click)="isCommentHidden=!isCommentHidden">Leave comments
+      </button>
+    </div>
+    
+    <div class="mt-2" [hidden]="isCommentHidden">
+      <app-stars [readonly]="false" [(rating)]= "newRating"></app-stars>     
+      <p><textarea [(ngModel)]="newComment" cols="50" rows="5"></textarea></p>
+      <p>
+        <input class="btn btn-success btn-lg" 
+          type="submit" value="Submit" 
+          (click) = "addComment()">
+      </p>
+    </div>
+    <div *ngFor="let comment of comments" class="row">
+      <hr>
+      <div class="col-md-12 mb-2">
+        <app-stars [rating]="comment.rating"></app-stars>
+        <p class="caption d-flex justify-content-between align-items-center">
+          <span>{{comment.user}}</span>
+          <span>{{comment.timestamp}}</span>
+        </p>
+        
+        <p></p>
+        <p>{{comment?.content}}</p>
+      </div>
+    </div>
+  </div>
+     
+</div>

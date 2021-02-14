@@ -1,0 +1,10 @@
+<form [formGroup]="formRegist" (submit) ="onSubmit()">
+  Username: <input type="text" formControlName="username">
+  Mobile: <input type="number" formControlName="mobile">
+  <div formGroupName="passwordGroup">
+    Password: <input type="password" formControlName="password">
+    Confirm Password: <input type="password" formControlName="confirmP">
+  </div>
+  <input type="submit" value="Submit" class="btn btn-confirm btn-lg">
+  
+</form>
